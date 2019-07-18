@@ -1,0 +1,249 @@
+@import 'variables';
+@import 'mixins';
+
+body{
+    background-color: $blue; /* For browsers that do not support gradients */
+    background-image: linear-gradient(to bottom right, #5664b9, #2e8fa3); /* Standard syntax (must be last) */
+    min-height: 100vh;
+}
+//***style for main form el****
+form{
+    max-width: 500px;
+    margin: 2% auto;
+    font-family: $roboto;
+
+
+    h1,p{
+        margin: 0;
+        font-weight: normal;
+    }
+    input{
+        font-size: $inputFontSize;
+        border: none;
+        background: transparent;
+        border-bottom: 1px solid $gray;
+        display: block;
+        width: 90%;
+        padding-left: 3px;
+        color: $gray;
+        font-size: 19px;
+
+        &:focus{
+            outline: none;
+            color: $blue;
+            border-color:transparent; 
+        }
+    }
+}
+//****************END*********************
+
+//***Style for form header ***
+.form-title {
+    @include mainContentWrapper;
+    .title{
+        flex: 5;
+        padding-left: 5px;
+    }
+}
+
+#mainProgress{
+    @include progress
+}
+
+form .circle{
+    border: 3px solid #ffffff5e;;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    font-size: 13px;
+}
+//****************END*********************
+
+//***Style for form body ***
+.form-body{
+    @include mainContentWrapper;
+    background-color: $dustyGray;
+    flex-direction: column;
+}
+.form-group{
+    display: flex;
+    margin: 25px 0;
+
+    .progress{
+        @include progress;
+    }
+    .circle{
+        color: $blue;
+        background-color: #fff;
+        font-size: 12px;
+        width: 20px;
+        height: 20px;
+        -webkit-box-shadow: 0px 7px 5px 0px rgb(214, 212, 212);
+        -moz-box-shadow: 0px 7px 5px 0px rgb(214, 212, 212);
+        box-shadow: 0px 7px 5px 0px rgb(214, 212, 212);
+        position: relative;
+
+        &.active{
+            -ms-transform: rotate(360deg);  
+            -webkit-transform: rotate(360deg);  
+            transform: rotate(360deg);  
+            transition: 2s;
+            background-color: $blue;
+            color: #fff;
+        }
+    }
+    label{
+        flex: 5;
+        justify-content: center;
+        display: flex;
+        position: relative;
+
+    }
+
+}
+.form-group .radio-holder{
+    flex: 5;
+    justify-content: center;
+    color: $gray;
+    padding-left: 5%;
+    p{
+        margin-top: 0px;
+    }
+    input{
+        display: inline-flex;
+        max-width: 25px;
+    }
+}
+
+.form-group:last-of-type .progress{
+    align-items: baseline;
+}
+
+
+//************END*********************
+
+
+//***********Animation ******************
+
+// label that act like sliding pleaceholder
+.label-text {
+    color:$gray; 
+    font-size:19px;
+    font-weight:normal;
+    position:absolute;
+    pointer-events:none;
+    left:5%;
+    top:0px;
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ .label-text, .input-field:valid ~ .label-text 		{
+    top:-20px;
+    font-size:14px;
+}
+
+.border{
+    width: 0px;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    background-color: $blue;
+
+}
+
+input:focus ~ .border{
+    -webkit-animation-name: border; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+    animation-name: border;
+    animation-duration: 1s;
+    animation-fill-mode:forwards;
+}
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes border {
+    0%   {width:0;}
+    25%  {width:90%;}
+    50%  {width:75%;}
+    100% {width:90%;}
+}
+
+/* Standard syntax */
+@keyframes border {
+    0%   {width:0;}
+    25%  {width:90%;}
+    50%  {width:75%;}
+    100% {width:90%;}
+}
+@-webkit-keyframes hvr-pulse {
+    25% {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+    75% {
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+    }
+}
+@keyframes hvr-pulse {
+    25% {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+    75% {
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+    }
+}
+.hvr-pulse {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-animation-name: hvr-pulse;
+    animation-name: hvr-pulse;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+.hvr-pulse:hover, .hvr-pulse:focus, .hvr-pulse:active {
+
+}
+
+//*************END**************************
+
+//style for button
+.button {
+    border-radius: 25px;
+    color: $blue;
+    border: 1px solid $blue;
+    padding: 5px;
+    margin: 35px auto 0;
+    width: 50%;
+    display: block;
+    font-size: 19px;
+    letter-spacing: 2px;
+    -webkit-box-shadow: 0px 7px 5px 0px rgb(214, 212, 212);
+    -moz-box-shadow: 0px 7px 5px 0px rgb(214, 212, 212);
+    box-shadow: 0px 7px 5px 0px rgb(214, 212, 212);
+
+    &.active{
+        background: $blue;
+        color: #fff;
+        transition: 2s ease;
+    }
+    &:hover{
+        cursor: pointer;
+    }
+}
+//************end button style**************
