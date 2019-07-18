@@ -10,7 +10,12 @@ form {
   max-width: 500px;
   margin: 2% auto;
   font-family: "Roboto", sans-serif; }
-  form h1, form p {
+  form h1 {
+    font-size: 23px;
+    margin: 0;
+    font-weight: normal; }
+  form p {
+    font-size: 14px;
     margin: 0;
     font-weight: normal; }
   form input {
